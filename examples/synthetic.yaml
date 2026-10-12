@@ -1,0 +1,22 @@
+study: synthetic
+seeds: [7]
+frame:
+  train: rows/train.npz
+  test: rows/test.npz
+split:
+  mode: files
+  calibration_fraction: 0.274
+estimator:
+  probe:
+    family: linear
+    C: 1.0
+    max_components: 256
+    min_rows_per_verdict: 40
+  calibration:
+    method: venn_abers
+    cross_fit_folds: 5
+flip:
+  threshold: 0.5
+decide:
+  error_levels: [0.25, 0.20, 0.15, 0.10, 0.05]
+  confidence: 0.95

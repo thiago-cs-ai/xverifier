@@ -1,0 +1,31 @@
+[project]
+name = "xverifier"
+version = "0.1.0"
+description = "Keep or flip a judge's verdicts, then choose confidence cutoffs at fixed error levels."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.24",
+    "scipy",
+    "scikit-learn>=1.4",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+xverifier = "xverifier.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+pythonpath = ["."]
